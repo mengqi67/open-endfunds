@@ -1,7 +1,7 @@
 <!--
  * @Author: ymq
  * @Date: 2025-08-03 17:36:22
- * @LastEditTime: 2025-08-04 16:50:14
+ * @LastEditTime: 2025-08-04 17:18:55
  * @LastEditors: ymq
  * @Description: 
 -->
@@ -68,7 +68,7 @@ const formItem = {
 const router = useRouter()
 const fileName = ref('')
 function handleUpload(file:any) {
-    fileName.value = file.value.name
+    fileName.value = file.name
     // console.log(file.value);
     return false
 }

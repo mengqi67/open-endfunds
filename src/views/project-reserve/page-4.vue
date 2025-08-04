@@ -25,19 +25,33 @@
                 </div>
                 <div class="right">
                     <router-link to="/project-reserve/new"><Button type="primary">新建</Button></router-link>
-                    <Button style="margin-left: 10px;">导入</Button>
-                    <Button style="margin-left: 10px;">导出</Button>
+                    <Button style="margin-left: 10px;" @click="showUploadModal">导入</Button>
+                    <Button style="margin-left: 10px;" @click="exportFn">导出</Button>
                 </div>
             </div>
             <Table :columns="columns" :data="data" :loading="loading" @on-row-click="goDetail"></Table>
             <br>
             <div class="page-wrap"><Page :total="5" show-total/></div>
         </Card>
+        <Modal
+            v-model="modal"
+            title="导入"
+            @on-ok="ok"
+            @on-cancel="cancel">
+            <Form>
+                <FormItem label="上传文件">
+                    <Upload action="" :before-upload="handleUpload">
+                        <Button icon="ios-cloud-upload-outline">上传文件</Button>
+                    </Upload>
+                    <div> {{ fileName }} </div>
+                </FormItem>
+            </Form>
+        </Modal>
     </div>
 </template>
 
 <script setup lang="ts">
-import { Card, Input, Button, Icon, Table, Page } from 'view-ui-plus'
+import { Card, Input, Button, Icon, Table, Page, Modal, Form, FormItem, Upload, Message } from 'view-ui-plus'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { columns, data } from './data'
@@ -45,6 +59,8 @@ import { columns, data } from './data'
 const fundName = ref('')
 const router = useRouter()
 const loading = ref(false)
+const modal = ref(false)
+const fileName = ref('')
 
 function goDetail() {
     router.push('/project-reserve/detail')
@@ -54,6 +70,24 @@ function refresh() {
     setTimeout(() => {
         loading.value = false
     }, 1500);
+}
+function showUploadModal() {
+    modal.value = true
+}
+function handleUpload(file:any) {
+    fileName.value = file.name
+    // console.log(file.value);
+    return false
+}
+function ok() {
+    Message.success('导入成功')
+    modal.value = false
+}
+function cancel() {
+    modal.value = false
+}
+function exportFn() {
+    Message.success('已创建导出任务，请稍后查看')
 }
 </script>
 
