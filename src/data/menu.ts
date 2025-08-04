@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-03 10:31:27
- * @LastEditTime: 2025-08-04 14:25:09
+ * @LastEditTime: 2025-08-04 17:45:54
  * @LastEditors: ymq
  * @Description: 
  */
@@ -51,34 +51,34 @@ const menuData:Array<menuItemType | subMenuItemType> = [
         ]
     },
     {
-        menuId: 'myFlow',
+        menuId: 'setProject',
         title: '立项管理',
         icon: 'md-folder',
         children: [
             {
-                menuId: 'myApprove',
+                menuId: 'setProject-1',
                 title: '1',
-                link: '/funds-set/my-funds'
+                link: '/set-project/page-1'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'setProject-2',
                 title: '2',
-                link: '/funds-set/my-funds'
+                link: '/set-project/page-2'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'setProject-3',
                 title: '3',
-                link: '/funds-set/my-funds'
+                link: '/set-project/page-3'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'setProject-4',
                 title: '4',
-                link: '/funds-set/my-funds'
+                link: '/set-project/page-4'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'setProject-5',
                 title: '5',
-                link: '/funds-set/my-funds'
+                link: '/set-project/page-5'
             }
         ]
     },
