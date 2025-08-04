@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-03 10:31:27
- * @LastEditTime: 2025-08-04 23:31:04
+ * @LastEditTime: 2025-08-04 23:52:06
  * @LastEditors: ymq
  * @Description: 
  */
@@ -275,34 +275,34 @@ const menuData:Array<menuItemType | subMenuItemType> = [
         ]
     },
     {
-        menuId: 'myFlow',
+        menuId: 'contractTextApproval',
         title: '合同文本审定',
         icon: 'md-folder',
         children: [
             {
-                menuId: 'myApprove',
+                menuId: 'contractTextApproval-1',
                 title: '1',
-                link: '/funds-set/my-funds'
+                link: '/contract-text-approval/page-1'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'contractTextApproval-2',
                 title: '2',
-                link: '/funds-set/my-funds'
+                link: '/contract-text-approval/page-2'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'contractTextApproval-3',
                 title: '3',
-                link: '/funds-set/my-funds'
+                link: '/contract-text-approval/page-3'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'contractTextApproval-4',
                 title: '4',
-                link: '/funds-set/my-funds'
+                link: '/contract-text-approval/page-4'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'contractTextApproval-5',
                 title: '5',
-                link: '/funds-set/my-funds'
+                link: '/contract-text-approval/page-5'
             }
         ]
     },

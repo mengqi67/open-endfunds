@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-01 20:27:45
- * @LastEditTime: 2025-08-04 23:32:17
+ * @LastEditTime: 2025-08-04 23:53:35
  * @LastEditors: ymq
  * @Description: 
  */
@@ -14,6 +14,8 @@ import ComplianceReview from './complianceReview'
 import RiskReview from './risk-review'
 import InvestmentCommittee from './investment-committee'
 import ContractReview from './contract-review'
+import ContractTextApproval from './contract-text-approval'
+import InterviewManage from './interview-manage'
 
 export default [
     ...ProjectReserve,
@@ -24,5 +26,7 @@ export default [
     ...ComplianceReview,
     ...RiskReview,
     ...InvestmentCommittee,
-    ...ContractReview
+    ...ContractReview,
+    ...ContractTextApproval,
+    ...InterviewManage
 ]
