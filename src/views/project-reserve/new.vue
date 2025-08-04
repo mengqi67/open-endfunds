@@ -1,7 +1,7 @@
 <!--
  * @Author: ymq
  * @Date: 2025-08-03 17:36:22
- * @LastEditTime: 2025-08-04 15:59:46
+ * @LastEditTime: 2025-08-04 16:26:05
  * @LastEditors: ymq
  * @Description: 
 -->
@@ -64,10 +64,8 @@ const formItem = {
     textarea: ''
 }
 const router = useRouter()
-const file = ref(null)
 const fileName = ref('')
-function handleUpload(file) {
-    file.value = file
+function handleUpload(file:any) {
     fileName.value = file.value.name
     // console.log(file.value);
     return false

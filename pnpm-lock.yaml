@@ -27,9 +27,12 @@ importers:
         specifier: ^4.5.1
         version: 4.5.1(vue@3.5.18(typescript@5.8.3))
     devDependencies:
+      '@types/node':
+        specifier: ^24.1.0
+        version: 24.1.0
       '@vitejs/plugin-vue':
         specifier: ^6.0.0
-        version: 6.0.1(vite@7.0.6(sass@1.89.2))(vue@3.5.18(typescript@5.8.3))
+        version: 6.0.1(vite@7.0.6(@types/node@24.1.0)(sass@1.89.2))(vue@3.5.18(typescript@5.8.3))
       '@vue/tsconfig':
         specifier: ^0.7.0
         version: 0.7.0(typescript@5.8.3)(vue@3.5.18(typescript@5.8.3))
@@ -44,7 +47,7 @@ importers:
         version: 28.8.0(@babel/parser@7.28.0)(vue@3.5.18(typescript@5.8.3))
       vite:
         specifier: ^7.0.4
-        version: 7.0.6(sass@1.89.2)
+        version: 7.0.6(@types/node@24.1.0)(sass@1.89.2)
       vue-tsc:
         specifier: ^2.2.12
         version: 2.2.12(typescript@5.8.3)
@@ -441,6 +444,9 @@ packages:
 
   '@types/lodash@4.17.20':
     resolution: {integrity: sha512-H3MHACvFUEiujabxhaI/ImO6gUrd8oOurg7LQtS7mbwIXA/cUqWrvBsaeJ23aZEPk1TAYkurjfMbSELfoCXlGA==}
+
+  '@types/node@24.1.0':
+    resolution: {integrity: sha512-ut5FthK5moxFKH2T1CUOC6ctR67rQRvvHdFLCD2Ql6KXmMuCrjsSsRI9UsLCm9M18BMwClv4pn327UvB7eeO1w==}
 
   '@types/web-bluetooth@0.0.16':
     resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
@@ -858,6 +864,9 @@ packages:
   ufo@1.6.1:
     resolution: {integrity: sha512-9a4/uxlTWJ4+a5i0ooc1rU7C7YOw3wT+UGqdeNNHWnOF9qcMBgLRS+4IYUqbczewFx4mLEig6gawh7X6mFlEkA==}
 
+  undici-types@7.8.0:
+    resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
+
   unimport@4.2.0:
     resolution: {integrity: sha512-mYVtA0nmzrysnYnyb3ALMbByJ+Maosee2+WyE0puXl+Xm2bUwPorPaaeZt0ETfuroPOtG8jj1g/qeFZ6buFnag==}
     engines: {node: '>=18.12.0'}
@@ -1223,12 +1232,16 @@ snapshots:
 
   '@types/lodash@4.17.20': {}
 
+  '@types/node@24.1.0':
+    dependencies:
+      undici-types: 7.8.0
+
   '@types/web-bluetooth@0.0.16': {}
 
-  '@vitejs/plugin-vue@6.0.1(vite@7.0.6(sass@1.89.2))(vue@3.5.18(typescript@5.8.3))':
+  '@vitejs/plugin-vue@6.0.1(vite@7.0.6(@types/node@24.1.0)(sass@1.89.2))(vue@3.5.18(typescript@5.8.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-beta.29
-      vite: 7.0.6(sass@1.89.2)
+      vite: 7.0.6(@types/node@24.1.0)(sass@1.89.2)
       vue: 3.5.18(typescript@5.8.3)
 
   '@volar/language-core@2.4.15':
@@ -1671,6 +1684,8 @@ snapshots:
 
   ufo@1.6.1: {}
 
+  undici-types@7.8.0: {}
+
   unimport@4.2.0:
     dependencies:
       acorn: 8.15.0
@@ -1744,7 +1759,7 @@ snapshots:
       tinycolor2: 1.6.0
       v-click-outside-x: 3.7.1
 
-  vite@7.0.6(sass@1.89.2):
+  vite@7.0.6(@types/node@24.1.0)(sass@1.89.2):
     dependencies:
       esbuild: 0.25.8
       fdir: 6.4.6(picomatch@4.0.3)
@@ -1753,6 +1768,7 @@ snapshots:
       rollup: 4.46.2
       tinyglobby: 0.2.14
     optionalDependencies:
+      '@types/node': 24.1.0
       fsevents: 2.3.3
       sass: 1.89.2
 

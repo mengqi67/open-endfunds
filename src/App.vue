@@ -1,12 +1,12 @@
 <!--
  * @Author: ymq
  * @Date: 2025-08-01 19:57:09
- * @LastEditTime: 2025-08-03 14:08:30
+ * @LastEditTime: 2025-08-04 16:24:44
  * @LastEditors: ymq
  * @Description: 
 -->
 <script setup lang="ts">
-import {Layout, Sider, Header, Content, Footer} from 'view-ui-plus'
+import {Layout, Sider, Content} from 'view-ui-plus'
 import sysMenu from '@/components/sysMenu.vue';
 </script>
 

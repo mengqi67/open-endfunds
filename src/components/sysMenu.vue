@@ -1,7 +1,7 @@
 <!--
  * @Author: ymq
  * @Date: 2025-08-03 10:00:03
- * @LastEditTime: 2025-08-03 17:04:13
+ * @LastEditTime: 2025-08-04 16:29:44
  * @LastEditors: ymq
  * @Description: 
 -->
@@ -14,9 +14,9 @@
                     <Icon :type="item.icon ? item.icon : 'md-folder'"></Icon>
                     {{ item.title }}
                 </template>
-                <MenuItem v-for="(menu) in item.children" :to="menu.link" :name="menu.menuId">{{ menu.title }}</MenuItem>
+                <MenuItem v-for="(menu) in (item as subMenuItemType).children" :to="menu.link" :name="menu.menuId">{{ menu.title }}</MenuItem>
             </Submenu>
-            <MenuItem v-else :name="item.menuId" :to="item.link">
+            <MenuItem v-else :name="item.menuId" :to="(item as menuItemType).link">
                 <Icon :type="item.icon ? item.icon : 'md-folder'"></Icon>
                 {{ item.title }}
             </MenuItem>
@@ -25,15 +25,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+// import { ref } from 'vue'
 import { Menu, Submenu, MenuItem, Icon } from 'view-ui-plus'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { menuData } from '@/data/menu';
-// import type {menuItemType, subMenuItemType} from '@/data/menu'
+import type {menuItemType, subMenuItemType} from '@/data/menu'
 
 const route = useRoute()
 
-function isSubMenu(item) {
+function isSubMenu(item:any) {
     // console.log(item);
     if (item.children) {
         return true
@@ -41,7 +41,7 @@ function isSubMenu(item) {
     return false
 }
 
-const menuActiveName = ref('')
+// const menuActiveName = ref('')
 </script>
 
 <style scoped>
