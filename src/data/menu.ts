@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-03 10:31:27
- * @LastEditTime: 2025-08-04 17:52:17
+ * @LastEditTime: 2025-08-04 17:58:49
  * @LastEditors: ymq
  * @Description: 
  */
@@ -115,34 +115,34 @@ const menuData:Array<menuItemType | subMenuItemType> = [
         ]
     },
     {
-        menuId: 'myFlow',
+        menuId: 'dueDiligence',
         title: '尽调管理',
         icon: 'md-folder',
         children: [
             {
-                menuId: 'myApprove',
+                menuId: 'dueDiligence-1',
                 title: '1',
-                link: '/funds-set/my-funds'
+                link: '/due-diligence/page-1'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'dueDiligence-2',
                 title: '2',
-                link: '/funds-set/my-funds'
+                link: '/due-diligence/page-2'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'dueDiligence-3',
                 title: '3',
-                link: '/funds-set/my-funds'
+                link: '/due-diligence/page-3'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'dueDiligence-4',
                 title: '4',
-                link: '/funds-set/my-funds'
+                link: '/due-diligence/page-4'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'dueDiligence-5',
                 title: '5',
-                link: '/funds-set/my-funds'
+                link: '/due-diligence/page-5'
             }
         ]
     },
