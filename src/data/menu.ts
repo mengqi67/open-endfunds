@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-03 10:31:27
- * @LastEditTime: 2025-08-03 17:04:02
+ * @LastEditTime: 2025-08-04 14:25:09
  * @LastEditors: ymq
  * @Description: 
  */
@@ -26,27 +26,27 @@ const menuData:Array<menuItemType | subMenuItemType> = [
             {
                 menuId: 'projectReserve-1',
                 title: '1',
-                link: '/funds-set/my-funds'
+                link: '/project-reserve/page-1'
             },
             {
                 menuId: 'projectReserve-2',
                 title: '2',
-                link: '/funds-set/my-funds'
+                link: '/project-reserve/page-2'
             },
             {
                 menuId: 'projectReserve-3',
                 title: '3',
-                link: '/funds-set/my-funds'
+                link: '/project-reserve/page-3'
             },
             {
                 menuId: 'projectReserve-4',
                 title: '4',
-                link: '/funds-set/my-funds'
+                link: '/project-reserve/page-4'
             },
             {
                 menuId: 'projectReserve-5',
                 title: '5',
-                link: '/funds-set/my-funds'
+                link: '/project-reserve/page-5'
             }
         ]
     },

@@ -1,7 +1,7 @@
 <!--
  * @Author: ymq
  * @Date: 2025-08-03 17:36:22
- * @LastEditTime: 2025-08-04 11:29:14
+ * @LastEditTime: 2025-08-04 15:59:46
  * @LastEditors: ymq
  * @Description: 
 -->
@@ -9,7 +9,7 @@
     <div class="page-main">
         <div class="page-title">投资者适当性管理新建</div>
         <Card :bordered="false" shadow>
-            <div class="subtitle">基本信息</div>
+            <div class="sub-title">基本信息</div>
             <Form :model="formItem" :label-width="120">
                 <FormItem label="标题">
                     <Input v-model="formItem.input" placeholder="请输入标题"></Input>
@@ -25,13 +25,14 @@
                     <Input v-model="formItem.textarea" type="textarea" :autosize="{ minRows: 2, maxRows: 5 }"
                         placeholder="请输入投资者适当性管理说明"></Input>
                 </FormItem>
-                <div class="subtitle">附件信息</div>
+                <div class="sub-title">附件信息</div>
                 <FormItem label="上传/下载/预览">
-                    <Upload action="/">
+                    <Upload action="/" :before-upload="handleUpload">
                         <Button icon="ios-cloud-upload-outline">上传文件</Button>
                     </Upload>
+                    <div> {{ fileName }} </div>
                 </FormItem>
-                <div class="subtitle">经办人信息</div>
+                <div class="sub-title">经办人信息</div>
                 <FormItem label="姓名">
                     <span>李月熙</span>
                 </FormItem>
@@ -39,7 +40,7 @@
                     重投资本管理有限公司
                 </FormItem>
                 <FormItem>
-                    <Button type="primary">提交</Button>
+                    <Button type="primary" @click="submit">提交</Button>
                     <Button style="margin-left: 8px" @click="goBack">返回上一页</Button>
                 </FormItem>
             </Form>
@@ -48,8 +49,9 @@
 </template>
 
 <script setup lang="ts">
-import { Card, Input, Button, Form, FormItem, Select, Option } from 'view-ui-plus'
+import { Card, Input, Button, Form, FormItem, Select, Option, Message, Upload } from 'view-ui-plus'
 import { useRouter} from 'vue-router'
+import {ref} from 'vue'
 const formItem = {
     input: '',
     select: '',
@@ -62,37 +64,30 @@ const formItem = {
     textarea: ''
 }
 const router = useRouter()
+const file = ref(null)
+const fileName = ref('')
+function handleUpload(file) {
+    file.value = file
+    fileName.value = file.value.name
+    // console.log(file.value);
+    return false
+}
+function submit() {
+    Message.success('提交成功')
+    setTimeout(() => {
+        goBack()
+    }, 1000);
+}
 function goBack() {
     router.go(-1)
 }
 </script>
 
 <style lang="scss" scoped>
-.page-title {
+/* .page-title {
     padding: 10px 0px;
     font-weight: bold;
     font-size: 18px;
-}
+} */
 
-.subtitle {
-    font-weight: bold;
-    font-size: 16px;
-    position: relative;
-    padding-left: 10px;
-    margin-bottom: 20px;
-
-    &::before {
-        content: "";
-        position: absolute;
-        width: 3px;
-        height: 80%;
-        background-color: #2d8cf0;
-        border-radius: 1px;
-        left: 0px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    /* border-left: 3px solid #2d8cf0; */
-}
 </style>

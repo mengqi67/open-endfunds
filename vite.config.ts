@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-01 19:57:09
- * @LastEditTime: 2025-08-03 14:18:32
+ * @LastEditTime: 2025-08-04 14:47:47
  * @LastEditors: ymq
  * @Description: 
  */
@@ -32,7 +32,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "@/assets/common.scss";`
+        additionalData: `@use "@/assets/common.scss" as *;`
       }
     }
   },
