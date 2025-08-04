@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-03 10:31:27
- * @LastEditTime: 2025-08-04 17:45:54
+ * @LastEditTime: 2025-08-04 17:52:17
  * @LastEditors: ymq
  * @Description: 
  */
@@ -83,34 +83,34 @@ const menuData:Array<menuItemType | subMenuItemType> = [
         ]
     },
     {
-        menuId: 'myFlow',
+        menuId: 'intermediaryHiring',
         title: '中介选聘',
         icon: 'md-folder',
         children: [
             {
-                menuId: 'myApprove',
+                menuId: 'intermediaryHiring-1',
                 title: '1',
-                link: '/funds-set/my-funds'
+                link: '/intermediary-hiring/page-1'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'intermediaryHiring-2',
                 title: '2',
-                link: '/funds-set/my-funds'
+                link: '/intermediary-hiring/page-2'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'intermediaryHiring-3',
                 title: '3',
-                link: '/funds-set/my-funds'
+                link: '/intermediary-hiring/page-3'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'intermediaryHiring-4',
                 title: '4',
-                link: '/funds-set/my-funds'
+                link: '/intermediary-hiring/page-4'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'intermediaryHiring-5',
                 title: '5',
-                link: '/funds-set/my-funds'
+                link: '/intermediary-hiring/page-5'
             }
         ]
     },
