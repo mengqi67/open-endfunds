@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-03 10:31:27
- * @LastEditTime: 2025-08-04 23:27:18
+ * @LastEditTime: 2025-08-04 23:31:04
  * @LastEditors: ymq
  * @Description: 
  */
@@ -243,34 +243,34 @@ const menuData:Array<menuItemType | subMenuItemType> = [
         ]
     },
     {
-        menuId: 'myFlow',
+        menuId: 'contractReview',
         title: '合同审查',
         icon: 'md-folder',
         children: [
             {
-                menuId: 'myApprove',
+                menuId: 'contractReview-1',
                 title: '1',
-                link: '/funds-set/my-funds'
+                link: '/contract-review/page-1'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'contractReview-2',
                 title: '2',
-                link: '/funds-set/my-funds'
+                link: '/contract-review/page-2'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'contractReview-3',
                 title: '3',
-                link: '/funds-set/my-funds'
+                link: '/contract-review/page-3'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'contractReview-4',
                 title: '4',
-                link: '/funds-set/my-funds'
+                link: '/contract-review/page-4'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'contractReview-5',
                 title: '5',
-                link: '/funds-set/my-funds'
+                link: '/contract-review/page-5'
             }
         ]
     },
