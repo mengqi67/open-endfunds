@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-03 10:31:27
- * @LastEditTime: 2025-08-04 23:13:08
+ * @LastEditTime: 2025-08-04 23:27:18
  * @LastEditors: ymq
  * @Description: 
  */
@@ -211,34 +211,34 @@ const menuData:Array<menuItemType | subMenuItemType> = [
         ]
     },
     {
-        menuId: 'myFlow',
+        menuId: 'investmentCommittee',
         title: '投委会决策',
         icon: 'md-folder',
         children: [
             {
-                menuId: 'myApprove',
+                menuId: 'investmentCommittee-1',
                 title: '1',
-                link: '/funds-set/my-funds'
+                link: '/investment-committee/page-1'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'investmentCommittee-2',
                 title: '2',
-                link: '/funds-set/my-funds'
+                link: '/investment-committee/page-2'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'investmentCommittee-3',
                 title: '3',
-                link: '/funds-set/my-funds'
+                link: '/investment-committee/page-3'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'investmentCommittee-4',
                 title: '4',
-                link: '/funds-set/my-funds'
+                link: '/investment-committee/page-4'
             },
             {
-                menuId: 'myApprove',
+                menuId: 'investmentCommittee-5',
                 title: '5',
-                link: '/funds-set/my-funds'
+                link: '/investment-committee/page-5'
             }
         ]
     },

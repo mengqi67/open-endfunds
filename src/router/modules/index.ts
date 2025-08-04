@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-01 20:27:45
- * @LastEditTime: 2025-08-04 23:14:01
+ * @LastEditTime: 2025-08-04 23:26:15
  * @LastEditors: ymq
  * @Description: 
  */
@@ -12,6 +12,7 @@ import IntermediaryHiring from './intermediary-hiring'
 import DueDiligence from './due-diligence'
 import ComplianceReview from './complianceReview'
 import RiskReview from './risk-review'
+import InvestmentCommittee from './investment-committee'
 
 export default [
     ...ProjectReserve,
@@ -20,5 +21,6 @@ export default [
     ...IntermediaryHiring,
     ...DueDiligence,
     ...ComplianceReview,
-    ...RiskReview
+    ...RiskReview,
+    ...InvestmentCommittee
 ]
