@@ -1,7 +1,7 @@
 <!--
  * @Author: ymq
  * @Date: 2025-08-03 17:36:22
- * @LastEditTime: 2025-08-04 16:26:05
+ * @LastEditTime: 2025-08-04 16:50:14
  * @LastEditors: ymq
  * @Description: 
 -->
@@ -16,9 +16,11 @@
                 </FormItem>
                 <FormItem label="投资者名称">
                     <Select v-model="formItem.select" multiple>
-                        <Option value="beijing">New York</Option>
-                        <Option value="shanghai">London</Option>
-                        <Option value="shenzhen">Sydney</Option>
+                        <Option value="chuangxin">深圳市创新投资集团有限公司</Option>
+                        <Option value="jishi">基石资本股份有限公司</Option>
+                        <Option value="tongchuang">同创伟业创业投资有限公司</Option>
+                        <Option value="dongfang">东方富海投资管理股份有限公司</Option>
+                        <Option value="songhe">松禾资本管理有限公司</Option>
                     </Select>
                 </FormItem>
                 <FormItem label="投资者适当性管理说明">
