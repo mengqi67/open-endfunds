@@ -1,13 +1,13 @@
 <!--
  * @Author: ymq
- * @Date: 2025-08-04 12:22:33
- * @LastEditTime: 2025-08-04 16:16:45
+ * @Date: 2025-08-04 12:22:21
+ * @LastEditTime: 2025-08-04 17:26:13
  * @LastEditors: ymq
  * @Description: 
 -->
 <template>
     <div class="page-main">
-        <div class="page-title">项目储备库管理-4</div>
+        <div class="page-title">存续期管理</div>
         <Card :bordered="false" shadow>
             <div>
                 <Input v-model="fundName" icon="ios-search" placeholder="基金简称" style="width: 200px" />
@@ -24,9 +24,12 @@
                     <Button type="text" icon="md-refresh" @click="refresh">刷新</Button>
                 </div>
                 <div class="right">
-                    <router-link to="/project-reserve/new"><Button type="primary">新建</Button></router-link>
-                    <Button style="margin-left: 10px;" @click="showUploadModal">导入</Button>
-                    <Button style="margin-left: 10px;" @click="exportFn">导出</Button>
+                    <router-link to="/project-reserve/new"><Button style="margin-left: 10px;">赎回</Button></router-link>
+                    <Button style="margin-left: 10px;" @click="exportFn">回售</Button>                    
+                    <router-link to="/project-reserve/new-repay"><Button style="margin-left: 10px;">分期还本</Button></router-link>
+                    <router-link to="/project-reserve/new-cash"><Button style="margin-left: 10px;">兑付</Button></router-link>                    
+                    <Button style="margin-left: 10px;" @click="exportFn">历史方案查询</Button>
+                    <Button style="margin-left: 10px;" @click="exportFn">收益分配</Button>
                 </div>
             </div>
             <Table :columns="columns" :data="data" :loading="loading" @on-row-click="goDetail"></Table>
@@ -54,7 +57,7 @@
 import { Card, Input, Button, Icon, Table, Page, Modal, Form, FormItem, Upload, Message } from 'view-ui-plus'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { columns, data } from './data'
+import { columns, data } from './data-4'
 
 const fundName = ref('')
 const router = useRouter()
@@ -87,7 +90,7 @@ function cancel() {
     modal.value = false
 }
 function exportFn() {
-    Message.success('已创建导出任务，请稍后查看')
+    Message.success('暂无权限，请联系管理员！')
 }
 </script>
 

@@ -7,7 +7,7 @@
 -->
 <template>
     <div class="page-main">
-        <div class="page-title">项目储备库管理-2</div>
+        <div class="page-title">发行产品库</div>
         <Card :bordered="false" shadow>
             <div>
                 <Input v-model="fundName" icon="ios-search" placeholder="基金简称" style="width: 200px" />
@@ -23,44 +23,31 @@
                     </div>
                     <Button type="text" icon="md-refresh" @click="refresh">刷新</Button>
                 </div>
-                <div class="right">
-                    <router-link to="/project-reserve/new"><Button type="primary">新建</Button></router-link>
-                    <Button style="margin-left: 10px;" @click="showUploadModal">导入</Button>
-                    <Button style="margin-left: 10px;" @click="exportFn">导出</Button>
+                <div class="right">                   
+                    <Button type="primary" @click="exportFn">创建分期产品</Button>
+                    <Button style="margin-left: 10px;" @click="exportFn">创建分期产品</Button>
+                    <Button style="margin-left: 10px;" @click="exportFn">产品信息变更</Button>
                 </div>
             </div>
             <Table :columns="columns" :data="data" :loading="loading" @on-row-click="goDetail"></Table>
             <br>
             <div class="page-wrap"><Page :total="5" show-total/></div>
         </Card>
-        <Modal
-            v-model="modal"
-            title="导入"
-            @on-ok="ok"
-            @on-cancel="cancel">
-            <Form>
-                <FormItem label="上传文件">
-                    <Upload action="" :before-upload="handleUpload">
-                        <Button icon="ios-cloud-upload-outline">上传文件</Button>
-                    </Upload>
-                    <div> {{ fileName }} </div>
-                </FormItem>
-            </Form>
-        </Modal>
+        
     </div>
 </template>
 
 <script setup lang="ts">
-import { Card, Input, Button, Icon, Table, Page, Modal, Form, FormItem, Upload, Message } from 'view-ui-plus'
+import { Card, Input, Button, Icon, Table, Page,  Message } from 'view-ui-plus'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { columns, data } from './data'
+import { columns, data } from './data-2'
 
 const fundName = ref('')
 const router = useRouter()
 const loading = ref(false)
-const modal = ref(false)
-const fileName = ref('')
+
+
 
 function goDetail() {
     router.push('/project-reserve/detail')
@@ -71,23 +58,9 @@ function refresh() {
         loading.value = false
     }, 1500);
 }
-function showUploadModal() {
-    modal.value = true
-}
-function handleUpload(file:any) {
-    fileName.value = file.name
-    // console.log(file.value);
-    return false
-}
-function ok() {
-    Message.success('导入成功')
-    modal.value = false
-}
-function cancel() {
-    modal.value = false
-}
+
 function exportFn() {
-    Message.success('已创建导出任务，请稍后查看')
+    Message.success('暂无权限，请联系管理员！')
 }
 </script>
 

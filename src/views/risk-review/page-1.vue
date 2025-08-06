@@ -7,7 +7,7 @@
 -->
 <template>
     <div class="page-main">
-        <div class="page-title">风险审查-1</div>
+        <div class="page-title">风险识别与清单管理</div>
         <Card :bordered="false" shadow>
             <div>
                 <Input v-model="fundName" icon="ios-search" placeholder="基金简称" style="width: 200px" />
@@ -24,7 +24,7 @@
                     <Button type="text" icon="md-refresh" @click="refresh">刷新</Button>
                 </div>
                 <div class="right">
-                    <router-link to="/risk-review/new"><Button type="primary">新建</Button></router-link>
+                    <router-link to="/compliance-review/new"><Button type="primary">新建</Button></router-link>
                     <Button style="margin-left: 10px;" @click="showUploadModal">导入</Button>
                     <Button style="margin-left: 10px;" @click="exportFn">导出</Button>
                 </div>
@@ -63,7 +63,7 @@ const modal = ref(false)
 const fileName = ref('')
 
 function goDetail() {
-    router.push('/risk-review/detail')
+    router.push('/compliance-review/detail')
 }
 function refresh() {
     loading.value = true

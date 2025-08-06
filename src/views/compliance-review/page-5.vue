@@ -7,7 +7,7 @@
 -->
 <template>
     <div class="page-main">
-        <div class="page-title">合规审查-5</div>
+        <div class="page-title">入库与动态管理</div>
         <Card :bordered="false" shadow>
             <div>
                 <Input v-model="fundName" icon="ios-search" placeholder="基金简称" style="width: 200px" />

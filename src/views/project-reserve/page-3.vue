@@ -7,7 +7,7 @@
 -->
 <template>
     <div class="page-main">
-        <div class="page-title">项目储备库管理-3</div>
+        <div class="page-title">历史信息查询</div>
         <Card :bordered="false" shadow>
             <div>
                 <Input v-model="fundName" icon="ios-search" placeholder="基金简称" style="width: 200px" />
@@ -23,11 +23,7 @@
                     </div>
                     <Button type="text" icon="md-refresh" @click="refresh">刷新</Button>
                 </div>
-                <div class="right">
-                    <router-link to="/project-reserve/new"><Button type="primary">新建</Button></router-link>
-                    <Button style="margin-left: 10px;" @click="showUploadModal">导入</Button>
-                    <Button style="margin-left: 10px;" @click="exportFn">导出</Button>
-                </div>
+                
             </div>
             <Table :columns="columns" :data="data" :loading="loading" @on-row-click="goDetail"></Table>
             <br>
@@ -54,7 +50,7 @@
 import { Card, Input, Button, Icon, Table, Page, Modal, Form, FormItem, Upload, Message } from 'view-ui-plus'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { columns, data } from './data'
+import { columns, data } from './data-3'
 
 const fundName = ref('')
 const router = useRouter()

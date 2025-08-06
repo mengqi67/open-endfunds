@@ -59,7 +59,21 @@ const routes = [
         path: '/project-reserve/new',
         component: () => import('@/views/project-reserve/new.vue'),
         meta: {
-            title: '投资者适当性管理新建'
+            title: '赎回'
+        }
+    },
+    {
+        path: '/project-reserve/new-repay',
+        component: () => import('@/views/project-reserve/new-repay.vue'),
+        meta: {
+            title: '分期还本'
+        }
+    },
+    {
+        path: '/project-reserve/new-cash',
+        component: () => import('@/views/project-reserve/new-cash.vue'),
+        meta: {
+            title: '兑付'
         }
     }
 ]

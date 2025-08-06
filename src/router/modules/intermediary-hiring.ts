@@ -40,6 +40,14 @@ const routes = [
         }
     },
     {
+        path: '/intermediary-hiring/page-6',
+        component: () => import('@/views/intermediary-hiring/page-6.vue'),
+        meta: {
+            title: '中介选聘',
+            menuId: 'mySet'
+        }
+    },
+    {
         path: '/intermediary-hiring/page-5',
         component: () => import('@/views/intermediary-hiring/page-5.vue'),
         meta: {

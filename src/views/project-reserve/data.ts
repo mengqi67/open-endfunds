@@ -18,50 +18,50 @@ const columns = [
         minWidth: 30
     },
     {
-        title: '基金编号',
+        title: '产品全称',
         key: 'fundNo',
         minWidth: 60
     },
     {
-        title: '基金阶段',
+        title: '产品代码',
         key: 'stage',
         minWidth: 60
     },
     {
-        title: '流程状态',
+        title: '发行场所',
         key: 'status',
         minWidth: 60
     },
     {
-        title: '基金名称',
+        title: '产品注册日期',
         key: 'name',
         minWidth: 60
     },
     {
-        title: '管理人名称',
+        title: '注册规模',
         key: 'manager',
         minWidth: 80
     },
     {
-        title: '认缴金额（万元）',
+        title: '最低募集金额',
         key: 'subscription',
         minWidth: 100
     },
     {
-        title: '实缴金额（万元）',
+        title: '产品期限',
         key: 'paid',
         minWidth: 100
     },
     {
-        title: '创建人',
+        title: '托管人',
         key: 'creator',
         minWidth: 60
     },
     {
         title: '操作',
-        key: 'operate',
+        key: 'opration',
         fixed: 'right',
-        width: 80,
+        width: 140,
         // render: (h, params) => {
         //     return h('span', {
         //         style: {
@@ -82,7 +82,8 @@ const data = [
         manager: 'ADU',
         subscription: '200000.0000',
         paid: '200000.0000',
-        creator: '测试'
+        creator: '测试',
+        opration: '撤销 | 变更'
 
     },
     {
@@ -94,7 +95,8 @@ const data = [
         manager: 'ADU',
         subscription: '50000.0000',
         paid: '50000.0000',
-        creator: '测试'
+        creator: '测试',
+        opration: '撤销 | 变更'
     },
     {
        index: '3',
@@ -105,7 +107,8 @@ const data = [
         manager: '中国资产经营管理有限公司',
         subscription: '5000.0000',
         paid: '5000.0000',
-        creator: '测试'
+        creator: '测试',
+        opration: '撤销 | 变更'
     },
     {
         index: '4',
@@ -116,7 +119,8 @@ const data = [
         manager: '中德产业投资基金',
         subscription: '200000.0000',
         paid: '200000.0000',
-        creator: '测试'
+        creator: '测试',
+        opration: '撤销 | 变更'
     },
     {
         index: '5',
@@ -127,7 +131,8 @@ const data = [
         manager: '深圳市重投资本',
         subscription: '200000.0000',
         paid: '200000.0000',
-        creator: '测试'
+        creator: '测试',
+        opration: '撤销 | 变更'
     }
 ]
 

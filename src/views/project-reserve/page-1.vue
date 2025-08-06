@@ -7,12 +7,14 @@
 -->
 <template>
     <div class="page-main">
-        <div class="page-title">项目储备库管理-1</div>
+        <div class="page-title">登记管理</div>
         <Card :bordered="false" shadow>
+            
             <div>
                 <Input v-model="fundName" icon="ios-search" placeholder="基金简称" style="width: 200px" />
                 <Button type="text" icon="ios-funnel-outline" @click="refresh">筛选</Button>
             </div>
+        
             <div class="option-wrap">
                 <div class="left">
                     <div class="sort-wrap" @click="refresh">排序：创建时间
@@ -24,9 +26,9 @@
                     <Button type="text" icon="md-refresh" @click="refresh">刷新</Button>
                 </div>
                 <div class="right">
-                    <router-link to="/project-reserve/new"><Button type="primary">新建</Button></router-link>
-                    <Button style="margin-left: 10px;" @click="showUploadModal">导入</Button>
-                    <Button style="margin-left: 10px;" @click="exportFn">导出</Button>
+                    <router-link to="/project-reserve/new"><Button type="primary">新建产品</Button></router-link>
+                    <Button style="margin-left: 10px;" @click="showUploadModal">登记信息导入</Button>
+                    <Button style="margin-left: 10px;" @click="exportFn">初始登记</Button>
                 </div>
             </div>
             <Table :columns="columns" :data="data" :loading="loading" @on-row-click="goDetail"></Table>
@@ -87,8 +89,9 @@ function cancel() {
     modal.value = false
 }
 function exportFn() {
-    Message.success('已创建导出任务，请稍后查看')
+    Message.success('暂无权限，请联系管理员！')
 }
+
 </script>
 
 <style lang="scss" scoped>

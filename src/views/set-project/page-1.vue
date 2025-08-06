@@ -7,31 +7,61 @@
 -->
 <template>
     <div class="page-main">
-        <div class="page-title">立项管理-1</div>
+        <div class="page-title">账务查询</div>
         <Card :bordered="false" shadow>
-            <div>
-                <Input v-model="fundName" icon="ios-search" placeholder="基金简称" style="width: 200px" />
-                <Button type="text" icon="ios-funnel-outline" @click="refresh">筛选</Button>
+            <div class="container">
+                <div class="box">
+                持有人账户号码：<Input v-model="fundName"  style="width: 200px" />
+                
+                </div>
+                <div class="box">
+                持有人账户全称：<Input v-model="fundName"  style="width: 200px" />
+               
+                </div>
+                <div  class="box">               
+                账户所属人：<Input v-model="fundName" style="width: 200px" />
+                </div>
+                
+            </div>
+             <div class="container">
+                <div class="box">
+                委托管理人/受托人：<Input v-model="fundName"   style="width: 200px" />
+                
+                </div>
+                <div class="box">
+                投资管理人：<Input v-model="fundName"   style="width: 200px" />
+               
+                </div>
+                <div  class="box">               
+                托管人：<Input v-model="fundName"  style="width: 200px" />
+                </div>
+                
+            </div>
+             <div class="container">
+                <div class="box">
+                账户状态：<Input v-model="fundName"   style="width: 200px" />
+                
+                </div>
+               
             </div>
             <div class="option-wrap">
                 <div class="left">
-                    <div class="sort-wrap" @click="refresh">排序：创建时间
+                    <div class="sort-wrap" @click="refresh">
                         <div class="arrow-wrap">
-                            <Icon type="md-arrow-dropup" class="arrow-up"/>
-                            <Icon type="md-arrow-dropdown" color="#2d8cf0"/>
+                           
                         </div>
                     </div>
-                    <Button type="text" icon="md-refresh" @click="refresh">刷新</Button>
+                    
                 </div>
                 <div class="right">
-                    <router-link to="/set-project/new"><Button type="primary">新建</Button></router-link>
-                    <Button style="margin-left: 10px;" @click="showUploadModal">导入</Button>
+                    <Button type="primary">查询 </Button>                
+                    <Button style="margin-left: 10px;" @click="exportFn">查看份额</Button>                  
                     <Button style="margin-left: 10px;" @click="exportFn">导出</Button>
                 </div>
             </div>
-            <Table :columns="columns" :data="data" :loading="loading" @on-row-click="goDetail"></Table>
+            <Table :columns="columns" :data="data" :loading="loading"></Table>
             <br>
-            <div class="page-wrap"><Page :total="5" show-total/></div>
+            <div class="page-wrap"><Page :total="0" show-total/></div>
         </Card>
         <Modal
             v-model="modal"
@@ -51,7 +81,7 @@
 </template>
 
 <script setup lang="ts">
-import { Card, Input, Button, Icon, Table, Page, Modal, Form, FormItem, Upload, Message } from 'view-ui-plus'
+import { Card, Input, Button, Table, Page, Modal, Form, FormItem, Upload, Message } from 'view-ui-plus'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { columns, data } from './data'
@@ -87,7 +117,7 @@ function cancel() {
     modal.value = false
 }
 function exportFn() {
-    Message.success('已创建导出任务，请稍后查看')
+    Message.success('暂无权限，请联系管理员！')
 }
 </script>
 
@@ -117,4 +147,18 @@ function exportFn() {
 .page-wrap{
     text-align: center;
 }
+.container {
+    overflow: auto; /* 清除浮动 */
+  }
+  .box {
+    float: left;
+    width: 25%; /* 每个div占据30%的宽度 */
+    margin-right: 5%; /* 右侧外边距 */
+    margin-bottom: 15px; /* 右侧外边距 */
+    box-sizing: border-box; /* 包括padding和border在内的宽度计算 */
+    text-align: right;
+  }
+  .box:last-child {
+    margin-right: 0; /* 最后一个div不设置右侧外边距 */
+  }
 </style>

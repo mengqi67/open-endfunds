@@ -1,37 +1,82 @@
 <!--
  * @Author: ymq
- * @Date: 2025-08-04 12:22:33
- * @LastEditTime: 2025-08-04 16:16:45
+ * @Date: 2025-08-04 12:22:21
+ * @LastEditTime: 2025-08-04 17:25:36
  * @LastEditors: ymq
  * @Description: 
 -->
 <template>
     <div class="page-main">
-        <div class="page-title">立项管理-4</div>
+        <div class="page-title">名册查询</div>
         <Card :bordered="false" shadow>
-            <div>
-                <Input v-model="fundName" icon="ios-search" placeholder="基金简称" style="width: 200px" />
-                <Button type="text" icon="ios-funnel-outline" @click="refresh">筛选</Button>
+            <div class="container">
+                <div class="box">
+                产品代码：<Input v-model="fundName"  style="width: 200px" />
+                
+                </div>
+                <div class="box">
+                产品名称：<Input v-model="fundName"  style="width: 200px" />
+               
+                </div>
+                <div  class="box">               
+                 产品种类：<Input v-model="fundName" style="width: 200px" />
+                </div>
+                
+            </div>
+             <div class="container">
+                <div class="box">
+                是否分期：<Input v-model="fundName"   style="width: 200px" />
+                
+                </div>
+                <div class="box">
+                是否分级：<Input v-model="fundName"   style="width: 200px" />
+               
+                </div>
+                <div  class="box">               
+                产品托管人全称：<Input v-model="fundName"  style="width: 200px" />
+                </div>
+                
+            </div>
+             <div class="container">
+                <div class="box">
+                产品管理人全称：<Input v-model="fundName"   style="width: 200px" />
+                
+                </div>
+                <div class="box">
+                境外托管人全称：<Input v-model="fundName"   style="width: 200px" />
+               
+                </div>
+                <div  class="box">               
+                产品托管人执行机构全称：<Input v-model="fundName"  style="width: 200px" />
+                </div>
+                
+            </div>
+             <div class="container">
+                <div class="box">
+                独立监督人全称：<Input v-model="fundName"   style="width: 200px" />
+                
+                </div>
+                 
+               
             </div>
             <div class="option-wrap">
                 <div class="left">
-                    <div class="sort-wrap" @click="refresh">排序：创建时间
+                    <div class="sort-wrap" @click="refresh">
                         <div class="arrow-wrap">
-                            <Icon type="md-arrow-dropup" class="arrow-up"/>
-                            <Icon type="md-arrow-dropdown" color="#2d8cf0"/>
+                           
                         </div>
                     </div>
-                    <Button type="text" icon="md-refresh" @click="refresh">刷新</Button>
+                    
                 </div>
                 <div class="right">
-                    <router-link to="/set-project/new"><Button type="primary">新建</Button></router-link>
-                    <Button style="margin-left: 10px;" @click="showUploadModal">导入</Button>
+                    <Button type="primary">查询 </Button>                
+                    <Button style="margin-left: 10px;" @click="exportFn">重置</Button>                  
                     <Button style="margin-left: 10px;" @click="exportFn">导出</Button>
                 </div>
             </div>
-            <Table :columns="columns" :data="data" :loading="loading" @on-row-click="goDetail"></Table>
+            <Table :columns="columns" :data="data" :loading="loading"></Table>
             <br>
-            <div class="page-wrap"><Page :total="5" show-total/></div>
+            <div class="page-wrap"><Page :total="0" show-total/></div>
         </Card>
         <Modal
             v-model="modal"
@@ -51,10 +96,10 @@
 </template>
 
 <script setup lang="ts">
-import { Card, Input, Button, Icon, Table, Page, Modal, Form, FormItem, Upload, Message } from 'view-ui-plus'
+import { Card, Input, Button, Table, Page, Modal, Form, FormItem, Upload, Message } from 'view-ui-plus'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { columns, data } from './data'
+import { columns, data } from './data-4'
 
 const fundName = ref('')
 const router = useRouter()
@@ -87,7 +132,7 @@ function cancel() {
     modal.value = false
 }
 function exportFn() {
-    Message.success('已创建导出任务，请稍后查看')
+    Message.success('暂无权限，请联系管理员！')
 }
 </script>
 
@@ -117,4 +162,26 @@ function exportFn() {
 .page-wrap{
     text-align: center;
 }
+.container {
+    overflow: auto; /* 清除浮动 */
+  }
+  .box {
+    float: left;
+    width: 25%; /* 每个div占据30%的宽度 */
+    margin-right: 5%; /* 右侧外边距 */
+    margin-bottom: 15px; /* 右侧外边距 */
+    box-sizing: border-box; /* 包括padding和border在内的宽度计算 */
+    text-align: right;
+  }
+  .box:last-child {
+    margin-right: 0; /* 最后一个div不设置右侧外边距 */
+  }
+   .box1 {
+    float: left;
+    width: 30%; /* 每个div占据30%的宽度 */
+    margin-right: 5%; /* 右侧外边距 */
+    margin-bottom: 15px; /* 右侧外边距 */
+    box-sizing: border-box; /* 包括padding和border在内的宽度计算 */
+    text-align: right;
+  }
 </style>

@@ -18,12 +18,12 @@ const columns = [
         minWidth: 30
     },
     {
-        title: '基金编号',
+        title: '产品全称',
         key: 'fundNo',
         minWidth: 60
     },
     {
-        title: '基金阶段',
+        title: '产品代码',
         key: 'stage',
         minWidth: 60
     },

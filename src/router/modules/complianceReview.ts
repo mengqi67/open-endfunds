@@ -48,6 +48,22 @@ const routes = [
         }
     },
     {
+        path: '/compliance-review/page-6',
+        component: () => import('@/views/compliance-review/page-6.vue'),
+        meta: {
+            title: '合规审查',
+            menuId: 'mySet'
+        }
+    },
+    {
+        path: '/compliance-review/page-7',
+        component: () => import('@/views/compliance-review/page-7.vue'),
+        meta: {
+            title: '合规审查',
+            menuId: 'mySet'
+        }
+    },
+    {
        path: '/compliance-review/detail',
         component: () => import('@/views/compliance-review/detail.vue'),
         meta: {
