@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-01 19:57:09
- * @LastEditTime: 2025-08-04 14:47:47
+ * @LastEditTime: 2025-08-06 15:06:24
  * @LastEditors: ymq
  * @Description: 
  */
@@ -11,6 +11,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import path from 'node:path'
+import { viteMockServe } from 'vite-plugin-mock'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -22,6 +23,11 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()],
     }),
+    viteMockServe({  
+      mockPath: './mock',  
+      // localEnabled: true,  
+      // prodEnabled: false,  
+    })
   ],
   resolve: {
     alias: {

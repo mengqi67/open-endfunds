@@ -1,7 +1,7 @@
 <!--
  * @Author: ymq
  * @Date: 2025-08-04 12:22:21
- * @LastEditTime: 2025-08-06 12:30:44
+ * @LastEditTime: 2025-08-06 15:43:14
  * @LastEditors: ymq
  * @Description: 
 -->
@@ -12,18 +12,18 @@
             
             <div>
                 <Input v-model="fundName" icon="ios-search" placeholder="基金简称" style="width: 200px" />
-                <Button type="text" icon="ios-funnel-outline" @click="refresh">筛选</Button>
+                <Button type="text" icon="ios-funnel-outline" @click="init">筛选</Button>
             </div>
         
             <div class="option-wrap">
                 <div class="left">
-                    <div class="sort-wrap" @click="refresh">排序：创建时间
+                    <div class="sort-wrap" @click="init">排序：创建时间
                         <div class="arrow-wrap">
                             <Icon type="md-arrow-dropup" class="arrow-up"/>
                             <Icon type="md-arrow-dropdown" color="#2d8cf0"/>
                         </div>
                     </div>
-                    <Button type="text" icon="md-refresh" @click="refresh">刷新</Button>
+                    <Button type="text" icon="md-refresh" @click="init">刷新</Button>
                 </div>
                 <div class="right">
                     <router-link to="/project-reserve/new"><Button type="primary">新建产品</Button></router-link>
@@ -31,9 +31,19 @@
                     <Button style="margin-left: 10px;" @click="exportFn">初始登记</Button>
                 </div>
             </div>
-            <Table :columns="columns" :data="data" :loading="loading" @on-row-click="goDetail"></Table>
+            <Table :columns="columns" :data="data" :loading="loading">
+                <template #operation="{ row }">
+                    <div>
+                        <span style="color: #2d8cf0;cursor: pointer;" @click="goDetail">查看</span>
+                        <span style="margin: 0 5px">|</span>
+                        <span style="color: #2d8cf0;cursor: pointer;" @click="handleDelete(row)">撤销</span>
+                        <span style="margin: 0 5px">|</span>
+                        <span style="color: #2d8cf0;cursor: pointer;" @click="handleEdit(row)">变更</span>
+                    </div>
+                </template>
+            </Table>
             <br>
-            <div class="page-wrap"><Page :total="5" show-total/></div>
+            <div class="page-wrap"><Page :total="listTotal" show-total/></div>
         </Card>
         <Modal
             v-model="modal"
@@ -56,23 +66,37 @@
 import { Card, Input, Button, Icon, Table, Page, Modal, Form, FormItem, Upload, Message } from 'view-ui-plus'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { columns, data } from './data'
+import { getList, deleteRow } from '@/service/api/project-reserve'
+import { columns } from './data'
 
 const fundName = ref('')
 const router = useRouter()
 const loading = ref(false)
 const modal = ref(false)
 const fileName = ref('')
+const data = ref<any[]>([])
+const listTotal = ref(0)
+
+async function init() {
+    loading.value = true
+    const res = await getList({
+        name: fundName.value
+    })
+    // console.log(res);
+    data.value = res.data
+    listTotal.value = res.data.length || 0
+    loading.value = false
+}
 
 function goDetail() {
     router.push('/project-reserve/detail')
 }
-function refresh() {
-    loading.value = true
-    setTimeout(() => {
-        loading.value = false
-    }, 1500);
-}
+// function refresh() {
+//     loading.value = true
+//     setTimeout(() => {
+//         loading.value = false
+//     }, 1500);
+// }
 function showUploadModal() {
     modal.value = true
 }
@@ -91,6 +115,34 @@ function cancel() {
 function exportFn() {
     Message.error('暂无权限，请联系管理员！')
 }
+
+function handleDelete(row:any) {
+    console.log(row);
+    Modal.confirm({
+        title: '确认撤销吗？',
+        content: '撤销后将无法恢复',
+        onOk: async () => {
+            const res = await deleteRow({
+                id: row.id
+            })
+            if (!res.error) {
+                Message.success('撤销成功')
+                init()
+            }
+        }
+    })
+}
+
+function handleEdit(row:any) {
+    router.push({
+        path: '/project-reserve/edit',
+        query: {
+            id: row.id
+        }
+    })
+}
+
+init()
 
 </script>
 
