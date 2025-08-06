@@ -1,7 +1,7 @@
 <!--
  * @Author: ymq
  * @Date: 2025-08-03 17:36:22
- * @LastEditTime: 2025-08-04 17:18:55
+ * @LastEditTime: 2025-08-06 18:30:13
  * @LastEditors: ymq
  * @Description: 
 -->
@@ -10,27 +10,28 @@
         <div class="page-title">添加赎回方案</div>
         <Card :bordered="false" shadow> 
             <div class="sub-title">基本信息</div>
-            <Form :model="formItem" :label-width="120">
-                <FormItem label="产品代码">
-                    <Input v-model="formItem.input" placeholder="请输入"></Input>
+            <Form ref="formRef" :model="formItem" :label-width="120" :rules="ruleValidate">
+                <FormItem label="产品代码" prop="fundNo">
+                    <Input v-model="formItem.fundNo" placeholder="请输入"></Input>
                 </FormItem>
-                <FormItem label="产品全称">
-                    <Input v-model="formItem.input" placeholder="请输入"></Input>
+                <FormItem label="产品全称" prop="name">
+                    <Input v-model="formItem.name" placeholder="请输入"></Input>
                 </FormItem>
-                <FormItem label="行权日期">
-                    <Input v-model="formItem.input" placeholder="请输入"></Input>
+                <FormItem label="行权日期" prop="registrationDate">
+                    <DatePicker type="date" :model-value="formItem.registrationDate" placeholder="请选择" @on-change="handelDateChange"/>
+                    <!-- <Input v-model="formItem.registrationDate" placeholder="请输入"></Input> -->
                 </FormItem>
-                <FormItem label="赎回总份额">
-                    <Input v-model="formItem.input" placeholder="请输入"></Input>
+                <FormItem label="赎回总份额" prop="redemptionSize"> 
+                    <Input v-model="formItem.redemptionSize" placeholder="请输入"></Input>
                 </FormItem>
-                <FormItem label="赎回总金额">
-                    <Input v-model="formItem.input" placeholder="请输入"></Input>
+                <FormItem label="赎回总金额" prop="redemptionAmount">
+                    <Input v-model="formItem.redemptionAmount" placeholder="请输入"></Input>
                 </FormItem>
-                <FormItem label="明细数据">
-                    <Input v-model="formItem.input" placeholder="请输入"></Input>
+                <FormItem label="明细数据" prop="detail">
+                    <Input v-model="formItem.detail" placeholder="请输入"></Input>
                 </FormItem>
-                <FormItem label="备注">
-                    <Input v-model="formItem.input" placeholder="请输入"></Input>
+                <FormItem label="备注" prop="notes">
+                    <Input v-model="formItem.notes" type="textarea" placeholder="请输入"></Input>
                 </FormItem>
                 <div class="sub-title">附件列表</div>
                 <FormItem label="上传附件">
@@ -60,24 +61,47 @@
 </template>
 
 <script setup lang="ts">
-import { Card, Input, Button, Form, FormItem,Modal, Select, Option, Message, Upload } from 'view-ui-plus'
-import { useRouter} from 'vue-router'
-import {ref} from 'vue'
-const formItem = {
-    input: '',
-    select: '',
-    radio: 'male',
-    checkbox: [],
-    switch: true,
-    date: '',
-    time: '',
-    slider: [20, 50],
-    textarea: ''
-}
+import { Card, Input, Button, Form, FormItem,Modal, DatePicker, Message, Upload, } from 'view-ui-plus'
+import { useRouter } from 'vue-router'
+import { ref, reactive } from 'vue'
+import { add } from '@/service/api/project-reserve'
+
+const formRef = ref()
+const formItem = reactive({
+    fundNo: '',
+	name: '',
+	registrationDate: '',
+	redemptionSize: '',
+	redemptionAmount: '',
+	detail: '',
+	notes: ''
+})
 const router = useRouter()
 const fileName = ref('')
-const loading = ref(false)
 const modal = ref(false)
+const ruleValidate = {
+    fundNo: [
+        { required: true, message: '请输入产品代码', trigger: 'change' }
+    ],
+    name: [
+        { required: true, message: '请输入产品全称', trigger: 'change' }
+    ],
+    registrationDate: [
+        { required: true, message: '请选择行权日期', trigger: 'change' }
+    ],
+    redemptionSize: [
+        { required: true, message: '请输入赎回总份额', trigger: 'change' }
+    ],
+    redemptionAmount: [
+        { required: true, message: '请输入赎回总金额', trigger: 'change' }
+    ],
+    detail: [
+        { required: true, message: '请输入明细数据', trigger: 'change' }
+    ],
+    notes: [
+        { required: true, message: '请输入备注', trigger: 'change' }
+    ]
+}
 function handleUpload(file:any) {
     fileName.value = file.name
     // console.log(file.value);
@@ -86,11 +110,23 @@ function handleUpload(file:any) {
 function showUploadModal() {
     modal.value = true
 }
+function handelDateChange(date:string) {
+    formItem.registrationDate = date
+}
 function submit() {
-    Message.success('添加成功')
-    setTimeout(() => {
-        goBack()
-    }, 1000);
+    console.log(formItem);
+    formRef.value.validate().then((valid:boolean) => {
+        if (valid) {
+            add(formItem).then((res) => {
+                if (!res.error) {
+                    Message.success('添加成功')
+                    setTimeout(() => {
+                        goBack()
+                    }, 1000);
+                }
+            })
+        }
+    })
 }
 function goBack() {
     router.go(-1)

@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-06 14:20:34
- * @LastEditTime: 2025-08-06 15:29:51
+ * @LastEditTime: 2025-08-06 18:25:05
  * @LastEditors: ymq
  * @Description: 
  */
@@ -13,4 +13,8 @@ export async function getList(params?:any) {
 
 export async function deleteRow(params?:any) {
     return request.post<any>(`/project-reserve/delete`, params)
+}
+
+export async function add(params?:any) {
+    return request.post<any>(`/project-reserve/add`, params)
 }

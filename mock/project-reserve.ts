@@ -5,7 +5,7 @@ export default [
     response: () => {
       return {
         code: 0,
-        message: 'success',
+        msg: 'success',
         data: [{
           id: '0001',
           fundNo: 'JG0000083',
@@ -75,9 +75,20 @@ export default [
     response: () => {
       return {
         code: 0,
-        message: 'success',
+        msg: 'success',
         data: {},
       };
     },
   },
+  {
+    url: '/project-reserve/add', // 请求的 URL
+    method: 'post', // 请求的方法
+    response: () => {
+      return {
+        code: 0,
+        msg: 'success',
+        data: {},
+      };
+    },
+  }
 ]
