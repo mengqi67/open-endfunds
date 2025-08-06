@@ -1,7 +1,7 @@
 <!--
  * @Author: ymq
  * @Date: 2025-08-04 12:22:21
- * @LastEditTime: 2025-08-04 17:25:36
+ * @LastEditTime: 2025-08-06 12:30:44
  * @LastEditors: ymq
  * @Description: 
 -->
@@ -89,7 +89,7 @@ function cancel() {
     modal.value = false
 }
 function exportFn() {
-    Message.success('暂无权限，请联系管理员！')
+    Message.error('暂无权限，请联系管理员！')
 }
 
 </script>

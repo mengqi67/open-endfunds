@@ -60,7 +60,7 @@ function refresh() {
 }
 
 function exportFn() {
-    Message.success('暂无权限，请联系管理员！')
+    Message.error('暂无权限，请联系管理员！')
 }
 </script>
 
