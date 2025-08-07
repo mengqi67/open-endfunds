@@ -1,7 +1,7 @@
 /*
  * @Author: ymq
  * @Date: 2025-08-01 19:57:09
- * @LastEditTime: 2025-08-06 15:06:24
+ * @LastEditTime: 2025-08-07 15:36:57
  * @LastEditors: ymq
  * @Description: 
  */
@@ -34,6 +34,15 @@ export default defineConfig({
       '@': path.resolve('./src')
     },
     extensions: ['.js','.vue', '.ts']
+  },
+  server: {
+    proxy: {
+      '/fund': {
+        target: 'http://112.125.18.176',
+        changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/fund/, '')
+      }
+    }
   },
   css: {
     preprocessorOptions: {
