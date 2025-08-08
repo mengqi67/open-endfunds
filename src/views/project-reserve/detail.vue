@@ -7,7 +7,7 @@
 -->
 <template>
     <div class="page-main">
-        <div class="page-title"><Button icon="md-arrow-back" style="margin-right: 20px;" @click="goBack">返回</Button>项目尽调详情</div>
+        <div class="page-title"><Button icon="md-arrow-back" style="margin-right: 20px;" @click="goBack">返回</Button>产品详情</div>
         <Card>
             <div class="sub-title">项目名称</div>
             <Form :label-width="120" label-position="left">

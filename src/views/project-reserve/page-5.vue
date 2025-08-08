@@ -1,7 +1,7 @@
 <!--
  * @Author: ymq
  * @Date: 2025-08-04 12:22:33
- * @LastEditTime: 2025-08-04 16:16:51
+ * @LastEditTime: 2025-08-08 19:02:39
  * @LastEditors: ymq
  * @Description: 
 -->
@@ -56,7 +56,7 @@
 import { Card, Input, Button, Icon, Table, Page, Modal, Form, FormItem, Upload, Message } from 'view-ui-plus'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { columns, data } from './data'
+import { columns, data } from './data-5'
 
 const fundName = ref('')
 const router = useRouter()

@@ -1,0 +1,1 @@
+import{r as o}from"./index-D_m96NXQ.js";async function e(t){return console.log(t),o.get("/account/list.php",t)}async function c(t){return o.post("/account/delete.php",t)}async function s(t){return console.log("222"),o.post("/account/add.php",t)}export{s as a,c as d,e as g};

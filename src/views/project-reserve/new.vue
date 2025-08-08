@@ -7,7 +7,7 @@
 -->
 <template>
     <div class="page-main">
-        <div class="page-title">添加赎回方案</div>
+        <div class="page-title">新建产品</div>
         <Card :bordered="false" shadow> 
             <div class="sub-title">基本信息</div>
             <Form ref="formRef" :model="formItem" :label-width="120" :rules="ruleValidate">
@@ -17,26 +17,28 @@
                 <FormItem label="产品全称" prop="name">
                     <Input v-model="formItem.name" placeholder="请输入"></Input>
                 </FormItem>
-                <FormItem label="行权日期" prop="registrationDate">
+                <FormItem label="发行场所" prop="place">
+                   <Select v-model="formItem.place">
+                        <Option value="场内">场内</Option>
+                        <Option value="场外">场外</Option>                                         
+                    </Select>
+                </FormItem>
+                
+                <FormItem label="产品注册日期" prop="registrationDate">
                     <DatePicker type="date" :model-value="formItem.registrationDate" placeholder="请选择" @on-change="handelDateChange"/>
                     <!-- <Input v-model="formItem.registrationDate" placeholder="请输入"></Input> -->
                 </FormItem>
-                <FormItem label="赎回总份额" prop="redemptionSize"> 
+                <FormItem label="注册规模" prop="redemptionSize"> 
                     <Input v-model="formItem.redemptionSize" placeholder="请输入"></Input>
                 </FormItem>
-                <FormItem label="赎回总金额" prop="redemptionAmount">
+                <FormItem label="最低募集金额" prop="redemptionAmount">
                     <Input v-model="formItem.redemptionAmount" placeholder="请输入"></Input>
                 </FormItem>
-                <FormItem label="明细数据" prop="detail">
-                    <Input v-model="formItem.detail" placeholder="请输入"></Input>
+               <FormItem label="产品期限" prop="productTerm">
+                    <DatePicker type="date" :model-value="formItem.productTerm" placeholder="请选择" @on-change="handelDateChange1"/>
+                    <!-- <Input v-model="formItem.registrationDate" placeholder="请输入"></Input> -->
                 </FormItem>
-                <FormItem label="备注" prop="notes">
-                    <Input v-model="formItem.notes" type="textarea" placeholder="请输入"></Input>
-                </FormItem>
-                <div class="sub-title">附件列表</div>
-                <FormItem label="上传附件">
-                    <Button style="margin-left: 10px;" @click="showUploadModal">上传</Button>
-                </FormItem>                
+                               
                 <FormItem>
                     <Button type="primary" @click="submit">添加</Button>
                     <Button style="margin-left: 8px" @click="goBack">返回上一页</Button>
@@ -61,7 +63,7 @@
 </template>
 
 <script setup lang="ts">
-import { Card, Input, Button, Form, FormItem,Modal, DatePicker, Message, Upload, } from 'view-ui-plus'
+import { Card, Input, Button, Form, FormItem,Select, Option, Modal, DatePicker, Message, Upload, } from 'view-ui-plus'
 import { useRouter } from 'vue-router'
 import { ref, reactive } from 'vue'
 import { add } from '@/service/api/project-reserve'
@@ -74,7 +76,9 @@ const formItem = reactive({
 	redemptionSize: '',
 	redemptionAmount: '',
 	detail: '',
-	notes: ''
+	notes: '',
+    place: '',
+    productTerm: ''
 })
 const router = useRouter()
 const fileName = ref('')
@@ -87,7 +91,10 @@ const ruleValidate = {
         { required: true, message: '请输入产品全称', trigger: 'change' }
     ],
     registrationDate: [
-        { required: true, message: '请选择行权日期', trigger: 'change' }
+        { required: true, message: '请选择注册日期', trigger: 'change' }
+    ],
+    productTerm: [
+        { required: true, message: '请选择产品期限', trigger: 'change' }
     ],
     redemptionSize: [
         { required: true, message: '请输入赎回总份额', trigger: 'change' }
@@ -100,6 +107,9 @@ const ruleValidate = {
     ],
     notes: [
         { required: true, message: '请输入备注', trigger: 'change' }
+    ],
+    place: [
+        { required: true, trigger: 'change' }
     ]
 }
 function handleUpload(file:any) {
@@ -112,6 +122,9 @@ function showUploadModal() {
 }
 function handelDateChange(date:string) {
     formItem.registrationDate = date
+}
+function handelDateChange1(date:string) {
+    formItem.productTerm = date
 }
 function submit() {
     console.log(formItem);

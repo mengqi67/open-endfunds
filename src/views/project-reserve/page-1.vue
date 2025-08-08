@@ -36,9 +36,7 @@
                     <div>
                         <span style="color: #2d8cf0;cursor: pointer;" @click="goDetail">查看</span>
                         <span style="margin: 0 5px">|</span>
-                        <span style="color: #2d8cf0;cursor: pointer;" @click="handleDelete(row)">撤销</span>
-                        <span style="margin: 0 5px">|</span>
-                        <span style="color: #2d8cf0;cursor: pointer;" @click="handleEdit(row)">变更</span>
+                        <span style="color: #2d8cf0;cursor: pointer;" @click="handleDelete(row)">撤销</span>                       
                     </div>
                 </template>
             </Table>
@@ -101,7 +99,7 @@ function showUploadModal() {
     modal.value = true
 }
 function handleUpload(file:any) {
-    fileName.value = file.name
+    fileName.value = file.name    
     // console.log(file.value);
     return false
 }
@@ -123,9 +121,11 @@ function handleDelete(row:any) {
         content: '撤销后将无法恢复',
         onOk: async () => {
             const res = await deleteRow({
-                id: row.id
-            })
+                id: row.fundNo
+            })   
+            console.log(res.error);        
             if (!res.error) {
+                
                 Message.success('撤销成功')
                 init()
             }
@@ -137,7 +137,7 @@ function handleEdit(row:any) {
     router.push({
         path: '/project-reserve/edit',
         query: {
-            id: row.id
+            id: row.fundNo
         }
     })
 }

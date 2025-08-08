@@ -22,10 +22,22 @@
                     <Button style="margin-left: 10px;" @click="exportFn">导出</Button>
                     <Button style="margin-left: 10px;" @click="refresh">刷新</Button>
                 </div>
-            </div>
-            <Table :columns="columns" :data="data" :loading="loading" ></Table>
+            </div>            
+             <Table :columns="columns" :data="data" :loading="loading">
+                <template #operation="{ row }">
+                    <div>
+                        <span style="color: #2d8cf0;cursor: pointer;" @click="exportFn">查看权限</span>
+                        <span style="margin: 0 5px">|</span>
+                        <span style="color: #2d8cf0;cursor: pointer;" @click="exportFn">变更</span>    
+                        <span style="margin: 0 5px">|</span>
+                        <span style="color: #2d8cf0;cursor: pointer;" @click="exportFn">停用</span>     
+                        <span style="margin: 0 5px">|</span>
+                        <span style="color: #2d8cf0;cursor: pointer;" @click="handleDelete(row)">注销</span>              
+                    </div>
+                </template>
+            </Table>
             <br>
-            <div class="page-wrap"><Page :total="2" show-total/></div>
+            <div class="page-wrap"><Page :total="listTotal" show-total/></div>
         </Card>
         <Modal
             v-model="modal"
@@ -48,14 +60,29 @@
 import { Card, Input, Button, Icon, Table, Page, Modal, Form, FormItem, Upload, Message } from 'view-ui-plus'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { columns, data } from './data'
+import { getList, deleteRow } from '@/service/api/account'
+import { columns} from './data'
 
 const fundName = ref('')
 const router = useRouter()
 const loading = ref(false)
 const modal = ref(false)
 const fileName = ref('')
+const data = ref<any[]>([])
+const listTotal = ref(0)
 
+
+async function init() {
+        console.log('re');
+    loading.value = true
+    const res = await getList({
+        name: fundName.value
+    })
+    console.log(res);
+    data.value = res.data
+    listTotal.value = res.data.length || 0
+    loading.value = false
+}
 function goDetail() {
     router.push('/compliance-review/detail')
 }
@@ -81,8 +108,29 @@ function cancel() {
     modal.value = false
 }
 function exportFn() {
+       // console.log('123');
     Message.error('暂无权限，请联系管理员！')
 }
+function handleDelete(row:any) {
+    console.log(row);
+    Modal.confirm({
+        title: '确认注销吗？',
+        content: '注销后将无法恢复',
+        onOk: async () => {
+            const res = await deleteRow({
+                id: row.positionid
+            })   
+            console.log(res.error);        
+            if (!res.error) {
+                
+                Message.success('撤销成功')
+                init()
+            }
+        }
+    })
+}
+
+init()
 </script>
 
 <style lang="scss" scoped>

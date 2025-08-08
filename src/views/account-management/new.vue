@@ -10,21 +10,20 @@
         <div class="page-title">新建岗位</div>
         <Card :bordered="false" shadow>
             <div class="sub-title">岗位信息</div>
-            <Form :model="formItem" :label-width="120">
+            <Form ref="formRef" :model="formItem" :label-width="120" :rules="ruleValidate">
                 <FormItem label="">
                    <Upload action="/" :before-upload="handleUpload">
                         <Button icon="ios-cloud-upload-outline">模板选择</Button>
-                    </Upload>
-                    
+                    </Upload>                    
                 </FormItem>
-                <FormItem label="岗位名称：">
-                    <Input v-model="formItem.input" ></Input>
+                <FormItem label="岗位名称：" prop="positionname">
+                    <Input v-model="formItem.positionname" placeholder="请输入" ></Input>
                 </FormItem>
-                <FormItem label="岗位描述：">
-                    <Input v-model="formItem.input" ></Input>
+                <FormItem label="岗位描述：" prop="positiondes">
+                    <Input v-model="formItem.positiondes" placeholder="请输入"></Input>
                 </FormItem>
-                <FormItem label="权限列表">
-                    <Input v-model="formItem.input" ></Input>
+                <FormItem label="权限列表" prop="positionpermition">
+                    <Input v-model="formItem.positionpermition" placeholder="请输入" ></Input>
                 </FormItem>
                 <FormItem>
                     <Button type="primary" @click="submit">提交</Button>
@@ -36,35 +35,62 @@
 </template>
 
 <script setup lang="ts">
-import { Card, Input, Button, Form, FormItem, Select, Option, Message, Upload } from 'view-ui-plus'
+import { Card, Input, Button, Form, FormItem, Select, Option, Modal,Message, Upload } from 'view-ui-plus'
 import { useRouter} from 'vue-router'
-import {ref} from 'vue'
-const formItem = {
-    input: '',
-    select: '',
-    radio: 'male',
-    checkbox: [],
-    switch: true,
-    date: '',
-    time: '',
-    slider: [20, 50],
-    textarea: ''
-}
+import {ref, reactive} from 'vue'
+import { add } from '@/service/api/account'
+
+const formRef = ref()
+const formItem = reactive({
+    positionname: '',
+	positiondes: '',
+	positionpermition: '',	
+})
 const router = useRouter()
 const fileName = ref('')
+const modal = ref(false)
+const ruleValidate = {
+    positionname: [
+        { required: true, message: '请输入岗位名称', trigger: 'change' }
+    ],
+    positiondes: [
+        { required: true, message: '请输入岗位描述', trigger: 'change' }
+    ],
+    positionpermition: [
+        { required: true, message: '请输入岗位权限', trigger: 'change' }
+    ]
+}
 function handleUpload(file:any) {
     fileName.value = file.name
     // console.log(file.value);
     return false
 }
 function submit() {
-    Message.success('提交成功')
-    setTimeout(() => {
-        goBack()
-    }, 1000);
+    
+    //console.log(formItem);
+    formRef.value.validate().then((valid:boolean) => {
+        if (valid) {
+            add(formItem).then((res) => {
+                 console.log(res.error);
+                if (!res.error) {
+                    Message.success('添加成功')
+                    setTimeout(() => {
+                        goBack()
+                    }, 1000);
+                }
+            })
+        }
+    })
 }
 function goBack() {
     router.go(-1)
+}
+function ok() {
+    Message.success('上传成功')
+    modal.value = false
+}
+function cancel() {
+    modal.value = false
 }
 </script>
 

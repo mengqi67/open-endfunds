@@ -1,7 +1,7 @@
 <!--
  * @Author: ymq
  * @Date: 2025-08-04 12:22:21
- * @LastEditTime: 2025-08-04 17:26:13
+ * @LastEditTime: 2025-08-08 19:04:43
  * @LastEditors: ymq
  * @Description: 
 -->
@@ -24,7 +24,7 @@
                     <Button type="text" icon="md-refresh" @click="refresh">刷新</Button>
                 </div>
                 <div class="right">
-                    <router-link to="/compliance-review/new"><Button type="primary">新建</Button></router-link>
+                    <Button type="primary"  @click="exportFn">新建</Button>
                     <Button style="margin-left: 10px;" @click="showUploadModal">导入</Button>
                     <Button style="margin-left: 10px;" @click="exportFn">导出</Button>
                 </div>
@@ -54,7 +54,7 @@
 import { Card, Input, Button, Icon, Table, Page, Modal, Form, FormItem, Upload, Message } from 'view-ui-plus'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { columns, data } from './data'
+import { columns, data } from './data-3'
 
 const fundName = ref('')
 const router = useRouter()
@@ -87,7 +87,7 @@ function cancel() {
     modal.value = false
 }
 function exportFn() {
-    Message.success('已创建导出任务，请稍后查看')
+    Message.success('暂无权限，请联系管理员！')
 }
 </script>
 

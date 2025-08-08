@@ -1,0 +1,1 @@
+import{r}from"./index-D_m96NXQ.js";async function s(e){return r.get("/project-reserve/list.php",e)}async function p(e){return r.post("/project-reserve/delete.php",e)}async function n(e){return r.post("/project-reserve/add.php",e)}export{n as a,p as d,s as g};

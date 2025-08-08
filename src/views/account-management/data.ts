@@ -10,37 +10,37 @@ const columns = [
     
     {
         title: '岗位编号',
-        key: 'index',
+        key: 'positionid',
         minWidth: 30
     },
     {
         title: '岗位名称',
-        key: 'fundNo',
+        key: 'positionname',
         minWidth: 60
     },
     {
         title: '岗位状态',
-        key: 'stage',
+        key: 'positionstatus',
         minWidth: 60
     },
     {
         title: '岗位人数',
-        key: 'status',
+        key: 'positionamount',
         minWidth: 60
     },
     {
         title: '创建时间',
-        key: 'name',
+        key: 'creattime',
         minWidth: 60
     },
     {
         title: '创建人',
-        key: 'manager',
+        key: 'creator',
         minWidth: 80
     },
     {
         title: '操作',
-        key: 'operate',
+        slot: 'operation',
         fixed: 'right',
         width: 280,
         // render: (h, params) => {
@@ -53,30 +53,8 @@ const columns = [
         // }
     }
 ]
-const data = [
-    {
-        index: '110019',
-        fundNo: '发行岗',
-        stage: '正常',
-        status: '2',
-        name: '2025-08-01 14：23：32',
-        manager: '张XX',
-        operate: '查看权限 | 变更 | 停用 | 注销'
 
-    },
-     {
-        index: '110020',
-        fundNo: '投后岗',
-        stage: '正常',
-        status: '8',
-        name: '2025-08-02 10：15：47',
-        manager: '张XX',
-        operate: '查看权限 | 变更 | 停用 | 注销'
-
-    }
-]
 
 export {
-    columns,
-    data
+    columns,  
 }

@@ -11,7 +11,7 @@ export async function getList(params?:any) {
     return request.get<any>('/project-reserve/list.php', params )
 }
 
-export async function deleteRow(params?:any) {
+export async function deleteRow(params?:any) {   
     return request.post<any>(`/project-reserve/delete.php`, params)
 }
 
